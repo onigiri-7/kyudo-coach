@@ -148,8 +148,15 @@ def render_login_page() -> None:
     st.info("ログイン後、練習内容を入力して AI コーチからアドバイスを受けられます。")
 
     if st.button("Googleでログイン", type="primary", use_container_width=True):
-        st.login("google")
-        st.rerun()
+        try:
+            # st.login() は遷移処理を開始するため、追加の rerun は不要。
+            st.login("google")
+        except Exception as e:
+            st.error(
+                "Googleログインを開始できませんでした。"
+                " Secrets の auth 設定と redirect_uri を確認してください。"
+            )
+            st.exception(e)
 
 
 def render_advice_tab() -> None:
