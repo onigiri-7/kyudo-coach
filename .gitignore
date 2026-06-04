@@ -1,6 +1,11 @@
 .env
+.env.local
 .streamlit/secrets.toml
 records/
+node_modules/
+.next/
+out/
+.vercel
 __pycache__/
 *.pyc
 .venv/
